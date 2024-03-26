@@ -8,6 +8,7 @@ cliente, agˆencia. * M´etodos: saque(), dep´osito(), transferˆencia().
 • class ContaPoupan¸ca: * Vari´aveis globais: n´umero da conta, CPF do
 cliente, agˆencia. * M´etodos: rendimento().'''
 
+saldo = 0
 class Conta():
     def __init__(self, numero, cpf, agencia, saldo):
         self.numero = numero
@@ -25,10 +26,11 @@ class Conta():
         
 class ContaCorrente(Conta):
     def __init__(self, numero, cpf, agencia, saldo):
-        super().__init__(numero, cpf, agencia)
-        self.saldo = saldo
+        super().__init__(numero, cpf, agencia, saldo)
+        #self.saldo = saldo
         
     def saque(self, valor):
+        self.valor = valor
         self.saldo -= valor
         return print(f'Sucesso! Seu novo saldo é {self.saldo}')
         
@@ -58,7 +60,7 @@ account = "94837401841"
 identity =  input("Insira o numero de CPF cadastrado: ")
 agency =  input("Número da agência: ")
 
-Titular1 = Conta(account, identity, agency, 0)
+Titular1 = Conta(account, identity, agency, saldo)
 print()
 print("Estamos preparando tudo para te receber...")
 print()
@@ -71,28 +73,28 @@ print()
 
 acc_type = 'X'
 while acc_type != 'C' or acc_type != 'P':
-    if acc_type != X:
+    acc_type = input("Qual o tipo da conta (C = corrente ou P = poupança)?").upper()
+    
+    if acc_type == 'C': # Conta Corrente
+        print(f'Seu saldo atual da conta bancária é de R${Titular1.saldo},00')
+        Titular1Corrente = ContaCorrente(account, identity, agency, saldo)
+        
+        operation = input("Insira o valor da operação que deseja fazer (S = saque; D = depósito; T = transferencia):")
+        
+        if operation == 'S':
+            valor_sacado = int(input("Insira o valor que deseja retirar: "))
+            Titular1Corrente.saque(valor_sacado)
+        elif operation == 'D':
+            valor_depositado = int(input("Insira o valor que deseja depositar: "))
+            Titular1Corrente.deposito(valor_depositado)
+        elif operation == 'T':
+            destino, valor_transferido = list(map, int(input("Insira a conta de destino e o valor que deseja transferir: ").split()))
+            Titular1Corrente.transferencia(valor_transferido)
+        else: 
+            print("Ops! Essa não é uma operação válida")
+    elif acc_type == 'P': # Conta Poupança
+        print(f'Seu saldo atual da conta bancária é de R${Titular1.saldo},00')
+    else:
         print("Ops! Tente novamente")
-    acc_type = input("Qual o tipo da conta (C = corrente ou P = poupança)?")
-if acc_type == 'C': # Conta Corrente
-    print(f'Seu saldo atual da conta bancária é de R${Titular1.saldo},00')
-    
-    
-    operation = input("Insira o valor da operação que deseja fazer (S = saque; D = depósito; T = transferencia):")
-    
-    if operation == 'S':
-        valor_sacado = int(input("Insira o valor que deseja retirar: "))
-        Titular1.saque(valor_sacado)
-    elif operation == 'D':
-        valor_depositado = int(input("Insira o valor que deseja depositar: "))
-        Titular1.deposito(valor_depositado)
-    elif operation == 'T':
-        destino, valor_transferido = list(map, int(input("Insira a conta de destino e o valor que deseja transferir: ").split()))
-        Titular1.transferencia(valor_transferido)
-    else: 
-        print("Ops! Essa não é uma operação válida")
-else: # Conta Poupança
-    print(f'Seu saldo atual da conta bancária é de R${saldo},00')
-
 
 operation = input("Insira o valor da operação que deseja fazer (S = saque; D = depósito; T = transferencia):")

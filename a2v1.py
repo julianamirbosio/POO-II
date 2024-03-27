@@ -9,7 +9,7 @@ class Pilha:
         self.cpilha = self.cpilha.append(cobjeto)
 
     def desempilhar(self, cobjeto): #pop
-        for i
+        pass
 
 print("Insira, linha a linha, os itens da pilha (os primeiros estaram no fundo da pilha e os ultimos no topo): ")
 print("Para encerrar o empilhamento, insira asterisco (*) ")

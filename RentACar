@@ -19,3 +19,42 @@ class contrato:
 	pagar
 
 mensagem bonitinha pra retirar o veiculo - fim do codigo
+
+class Cliente:
+    def __init__(self, nome, cpf, email, endereco):
+        self.nome = nome
+        self.cpf = cpf
+        self.email = email
+        self.endereco = endereco
+    
+class Carro:
+    def __init__(self, modelo, ano, disponibilidade):
+        self.modelo = modelo
+        self.ano = ano
+        self.disponibilidade = disponibilidade
+
+class Aluguel:
+    def __init__(self, cliente, carro, dias):
+        self.cliente = cliente
+        self.carro = carro
+        self.dias = dias
+        
+    def InfoContrato():
+        print("===== CONTRATO =====")
+        print("Nome do Locatário: %")
+        print("CPF:")
+        print("Email:")
+        print("Endereco:")
+        print("Modelo/Ano do carro:")
+        print("Dias:")
+        print("-----Adicionais-----")
+        print("Seguro:")
+        print("Limpeza: ")
+        print("Cadeirinha de criança: ")
+        print("--------------------")
+        print("Valor:")
+        
+while True:
+    print("ALUGUEL DE CARRO")
+    print("----------------")
+    print("Insira as informações do cliente")
